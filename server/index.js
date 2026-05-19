@@ -93,22 +93,24 @@ app.use(globalErrorHandler);
 // ═══════════════════════════════════════
 // DATABASE CONNECTION & SERVER START
 // ═══════════════════════════════════════
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/fairdigest';
+// Start server immediately
+app.listen(PORT, () => {
+  logger.info(`🚀 The Fair Digest API running on port ${PORT}`);
+  logger.info(`📰 Environment: ${process.env.NODE_ENV || 'development'}`);
+});
 
-mongoose.connect(MONGODB_URI)
-  .then(() => {
-    logger.info('✅ Connected to MongoDB');
-    app.listen(PORT, () => {
-      logger.info(`🚀 The Fair Digest API running on port ${PORT}`);
-      logger.info(`📰 Environment: ${process.env.NODE_ENV || 'development'}`);
+// Connect to MongoDB in the background if MONGODB_URI is configured
+const MONGODB_URI = process.env.MONGODB_URI;
+if (MONGODB_URI) {
+  mongoose.connect(MONGODB_URI)
+    .then(() => {
+      logger.info('✅ Connected to MongoDB');
+    })
+    .catch((err) => {
+      logger.error('❌ MongoDB connection error:', err.message);
     });
-  })
-  .catch((err) => {
-    logger.error('❌ MongoDB connection error:', err.message);
-    // Start server anyway for non-DB routes
-    app.listen(PORT, () => {
-      logger.warn(`⚠️ Server started WITHOUT database on port ${PORT}`);
-    });
-  });
+} else {
+  logger.warn('⚠️ MONGODB_URI is not configured. Running in-memory database fallback.');
+}
 
 module.exports = app;
