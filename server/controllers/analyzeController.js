@@ -95,7 +95,7 @@ async function analyzeHandler(req, res, next) {
         riskScore: 78, // 100 - 22 = 78
         scoreBreakdown: { domainReputation: 95, contentBias: 80, factuality: 65 },
         signals: [
-          'Domain not recognized in credibility database', 
+          'Domain not recognized in credibility database',
           'No HTTPS encryption detected',
           'IP located in high-risk country: Unknown/Proxy',
           'Suspicious ASN detected: AS0000 (Offshore Hosting)',

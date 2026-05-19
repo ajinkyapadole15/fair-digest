@@ -7,7 +7,7 @@ import axios from 'axios';
 
 // In production (Vercel), VITE_API_URL points to the Render backend.
 // In local dev, falls back to '/api' which Vite proxies to localhost:5000.
-const API_BASE_URL = 'https://fair-digest-3.onrender.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
