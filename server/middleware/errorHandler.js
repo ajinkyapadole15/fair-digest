@@ -53,7 +53,8 @@ function globalErrorHandler(err, req, res, next) {
       // Programming or unknown error
       res.status(500).json({
         status: 'error',
-        message: 'Something went wrong. Please try again later.'
+        message: err.message,
+        stack: err.stack
       });
     }
   } else {
