@@ -1,0 +1,18 @@
+{
+  "name": "fair-digest",
+  "version": "1.0.0",
+  "description": "The Fair Digest — An Ethical News Summarizer",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "test": "cd server && npm test"
+  },
+  "keywords": ["news", "ai", "ethics", "bias-detection", "summarizer"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
