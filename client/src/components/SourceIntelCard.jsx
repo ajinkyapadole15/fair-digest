@@ -16,7 +16,7 @@ export default function SourceIntelCard({ sourceIntel }) {
 
   if (!sourceIntel) return null;
 
-  const { domain, ip, country, city, isp, org, asn, threatLevel, riskScore, scoreBreakdown, signals, isHttps, credibilityNotes } = sourceIntel;
+  const { domain, ip, country, city, isp, org, asn, threatLevel, scoreBreakdown, signals, isHttps, credibilityNotes } = sourceIntel;
 
   const threatColors = {
     GREEN: { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-300', label: 'Trusted Source', dot: 'bg-green-500' },

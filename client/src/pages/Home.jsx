@@ -12,11 +12,6 @@ export default function Home({ user, onLogout }) {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState(null);
 
-  // Fetch recent briefs on load
-  useEffect(() => {
-    fetchBriefs();
-  }, [user]);
-
   const fetchBriefs = async () => {
     try {
       const res = await api.get('/briefs');
@@ -27,6 +22,11 @@ export default function Home({ user, onLogout }) {
       console.error('Failed to fetch briefs', err);
     }
   };
+
+  // Fetch recent briefs on load
+  useEffect(() => {
+    fetchBriefs();
+  }, [user]);
 
   const handleAnalyze = async (payload) => {
     setIsAnalyzing(true);
