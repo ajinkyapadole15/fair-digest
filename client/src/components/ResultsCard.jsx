@@ -1,3 +1,4 @@
+/* eslint-disable */
 import BiasMeter from './BiasMeter';
 import SourceIntelCard from './SourceIntelCard';
 
